@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
+import { MONGO_URI } from "./env";
+
 
 mongoose.set("strictQuery", true);
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI as string);
+    await mongoose.connect(MONGO_URI as string);
     console.log("mongodb connected");
   } catch (err) {
     console.log(err);

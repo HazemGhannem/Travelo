@@ -1,6 +1,7 @@
 import connectDB from "./config/db";
-import  users  from "./data/users";
+import { getUsers } from "./data/users";
 import UserModel from "./models/user.model";
+
 connectDB();
 
 const destroyUserData = async () => {
@@ -16,6 +17,7 @@ const destroyUserData = async () => {
 
 const addUsers = async () => {
   try {
+    const users = await getUsers(); 
     await UserModel.insertMany(users);
     console.log("Users added");
     process.exit();
